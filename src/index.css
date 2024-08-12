@@ -1,13 +1,111 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.new-todo-form {
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 8px grey;
+  margin-bottom: 30px;
+}
+
+.new-todo-input {
+  font-size: 16px;
+  padding: 8px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  border-radius: 8px;
+  width: 70%;
+  outline: none;
+}
+
+.new-todo-button {
+  font-size: 16px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  margin-left: 8px;
+  width: 20%;
+  background-color: #22ee22;
+}
+
+/* TodoList styles */
+
+.list-wrapper {
+  max-width: 700px;
+  margin: auto;
+}
+
+/* TodoListItem styles */
+
+.todo-item-container {
+  background: #fff;
+  border-radius: 8px;
+  margin-top: 20px;
+  padding: 16px;
+  position: relative;
+  box-shadow: 0 4px 8px grey;
+}
+
+.buttons-container {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+}
+
+button {
+  font-size: 16px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+.completed-button {
+  display: inline-block;
+  background-color: #22ee22;
+}
+
+.remove-button {
+  display: inline-block;
+  background-color: #ee2222;
+  margin-left: 8px;
+}
+
+.completed-todo-item {
+  box-shadow: 0px 0px 10px 5px rgba(208, 12, 12, 0.3);
+}
+
+/* Loader styles */
+.loader {
+  margin: auto;
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #3498db;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
