@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { addTodoRequest } from "../redux/thunks/todoThunk";
 
-const NewTodoForm = () => {
+const NewTodoForm = ({ onCreatePressed }) => {
   const [text, setText] = useState("");
-  const dispatch = useDispatch();
 
   const addTotoHandler = () => {
-    dispatch(addTodoRequest(text));
+    onCreatePressed(text);
   };
 
   return (
@@ -25,4 +24,8 @@ const NewTodoForm = () => {
   );
 };
 
-export default NewTodoForm;
+const mapDispatchToProps = (dispatch) => {
+  return { onCreatePressed: (text) => dispatch(addTodoRequest(text)) };
+};
+
+export default connect(null, mapDispatchToProps)(NewTodoForm);

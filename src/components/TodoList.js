@@ -1,17 +1,14 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import TodoListItem from "./TodoListItem";
 import NewTodoForm from "./NewTodoForm";
 import Loader from "./Loader";
 import { loadTodos } from "../redux/thunks/todoThunk";
 
-const TodoList = () => {
-  const { todos, isLoading } = useSelector((state) => state.todos);
-  const dispatch = useDispatch();
-
+const TodoList = ({ todos, isLoading, fetchTodos }) => {
   useEffect(() => {
-    dispatch(loadTodos());
-  }, [dispatch]);
+    fetchTodos();
+  }, [fetchTodos]);
 
   return (
     <div className="list-wrapper">
@@ -28,4 +25,13 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+const mapStateToProps = (state) => {
+  const { todos, isLoading } = state.todos;
+  return { todos, isLoading };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return { fetchTodos: () => dispatch(loadTodos()) };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

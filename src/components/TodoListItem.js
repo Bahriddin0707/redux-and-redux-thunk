@@ -1,18 +1,16 @@
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import {
   completeTodoRequest,
   removeTodoRequest,
 } from "../redux/thunks/todoThunk";
 
-const TodoListItem = ({ todo }) => {
-  const dispatch = useDispatch();
-
+const TodoListItem = ({ todo, removeTodo, completeTodo }) => {
   const deleteHandler = (id) => {
-    dispatch(removeTodoRequest(id));
+    removeTodo(id);
   };
 
   const completeHandler = (todo) => {
-    dispatch(completeTodoRequest(todo));
+    completeTodo(todo);
   };
 
   return (
@@ -43,4 +41,11 @@ const TodoListItem = ({ todo }) => {
   );
 };
 
-export default TodoListItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeTodo: (id) => dispatch(removeTodoRequest(id)),
+    completeTodo: (todo) => dispatch(completeTodoRequest(todo)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(TodoListItem);
